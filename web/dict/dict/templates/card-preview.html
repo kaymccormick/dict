@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      py:strip="">
+<div class="card">
+<div class="defs">
+<div py:for="usage in word.usages" class="xx">
+ <div class="senses">
+   <div class="sense">${usage.desc}</div>
+ </div>
+ <div class="defs">
+   <div class="def" py:for="meaning in usage.meanings">${meaning.representation}</div>
+ </div>
+</div>
+</div>
+</div>
+</html>

@@ -1,0 +1,4 @@
+recursive-include dict/public *
+include dict/public/favicon.ico
+recursive-include dict/i18n *
+recursive-include dict/templates *

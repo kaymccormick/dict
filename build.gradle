@@ -1,0 +1,7 @@
+task dictPipInstall(type:Exec) {
+  commandLine System.getenv('PYTHON_EXE'), System.getenv('VIRTUAL_ENV') + '/bin/pip', 'install',  '-e', 'web/dict', '--no-index', '-f', 'http://perforce:7080/tg_pkgs'
+}
+
+task build(dependsOn: dictPipInstall) {
+}
+

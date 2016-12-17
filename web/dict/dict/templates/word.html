@@ -1,0 +1,123 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <title>${word.representation}</title>
+  <style>
+div.card-preview:hover { transform: rotateY(180deg); backface-visibility: hidden;
+transform-style: preserve-3d;
+transition-property: transform;
+transition-duration: 1s;
+}
+.schk { display: none; }
+.keyword { font-size: 120%; }
+.front { text-align: center; }
+.card {
+    font-family: "free sans",
+                 "Lucida Sans";
+    font-weight: narrow;
+    font-size: 16pt;
+    color: black;
+    background-color: white;
+}
+
+/* phonetic fields */
+.phon { 
+    font-family: "Charis SIL, Doulos SIL";
+    font-size: 24pt;
+    top: -1em;
+}
+
+table.answer_table {
+/*     border: 1px solid #00ff00; */
+    border-spacing: 1em 0px; 
+    margin-bottom: 1em; 
+    border-collapse: separate;
+}
+
+td.answer {
+    width: 180px;
+}
+
+/* this is for the headers */
+#answer-table tr th {
+/*    border: 1px solid #0000ff;*/
+    margin: 0px 10px 0px 0px;
+    font-size: 75%;
+    width: 5.5em;
+    font-style: italic; 
+    font-weight: normal; 
+    text-align: right;
+}
+
+#answer-table tr td {
+    text-align: left;
+/*    border: 1px solid #ff0000; */
+}
+table.defs { border: 0px solid gray; }
+.defs tr td { padding: .25em; border: 1px solid #999999; }
+div.senses  { font-style: italic; text-align: right; border-bottom: 1px black solid; line-height: .6em;  }
+div.xx { padding-bottom: .33em; }
+div.defs { text-align: left; }
+.sense {
+    display: inline;
+    margin-left: .5em;
+    font-size: 60%;
+    padding: -10px;
+    margin: 0px 0px 0px 10px;
+    line-height: 1em;
+    border: solid 0px black;
+    white-space: nowrap;
+}
+.def { font-size: 75% }
+divzx { margin-top: 1em; }
+h3 { font-sIze: 75%; margin-bottom: 0px; text-decoration: underline; }
+div.card-note { margin-left: .67em; }
+
+    .main_content: { }
+/*    .square { left: 25px; position: absolute; }*/
+    .preview { float: right; /* position: absolute;*/ }
+    .card-preview { border: 3px gray solid; padding: .5em; margin-top: 1em; }
+div.details { float: left; }
+
+</style>
+</head>
+
+<body>
+  <div class="main_content">
+<div class="details">
+<h1><span py:replace="word.representation">word</span></h1>
+<span><span py:replace="word.kind.name">kind of word</span> (<span py:replace="word.kind.abbr">abbr</span>)</span>
+<div><a href="/edit/${word.representation}">edit</a></div>
+<div py:for="usage in word.usages">
+<h3>${usage.desc}</h3>
+<ul>
+<li py:for="meaning in usage.meanings">${meaning.representation} <span class="square">&#x2B1B;</span> <span py:for="group in meaning.groups">(${group.name}) </span></li>
+</ul>
+</div>
+<h3>URLs</h3>
+<ul>
+<li py:for="theurl in word.urls">
+<a href="${theurl.urlvalue}">${theurl.urlvalue}</a>
+</li>
+
+</ul>
+</div>
+
+<div class="preview">
+<div class="card-preview">
+<xi:include href="card-preview.html"/>
+</div>
+&#x293B;
+<div class="card-preview">
+<xi:include href="card-preview-back.html"/>
+</div>
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      py:strip="">
+<div class="card">
+<table class="answer_table" id='answer-table'>
+<tr class='main-answer'><th>French:</th>
+<td class='french answer'><!-- {{ArticleDefinite}} --> ${word.representation}</td>
+</tr>
+<tr class='word-type'><th>Word Type:</th><td>${word.kind.name}</td></tr>
+<!-- {{#Phonetic}} -->
+<tr class='phonetic'><th>Phonetic:</th><td><span class="phon">${word.ipa_pronunciation}</span></td></tr>
+<!-- {{/Phonetic}} -->
+<!-- {{#Inflections}}--> 
+<tr><td colspan="2"><!--{{Inflections}} --></td></tr>
+<!-- {{/Inflections}} -->
+</table>
+<div>Example: <!--{{Example}}--><br/></div>
+<div class='translation'>Translation: <!--{{Example in English}} --></div>
+<!-- {{#CardNote}}-->
+<h3>Note</h3>
+<div class='card-note'><!-- {{CardNote}} --></div>
+<!-- {{/CardNote}} -->
+
+</div>
+</html>

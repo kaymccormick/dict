@@ -1,0 +1,4 @@
+*.pyc
+*~
+tools/build
+web/dict/dict.egg-info

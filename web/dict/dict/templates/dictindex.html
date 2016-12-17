@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <title>Welcome to Dict</title>
+</head>
+
+<body>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="jumbotron">
+        <h2>Bienvenue au &laquo;<em>Dictionnaire</em>&raquo;</h2>
+      </div>
+    </div>
+  </div>
+  <h3><a href="${tg.url('/wordlist')}">Word List</a></h3>
+  <h3>Statistics</h3>
+  <table>
+<tr>
+<th>Unique representations</th>
+<td>${statvars.unique_representations}</td>
+</tr>
+<tr>
+<th>Known word kinds</th>
+<td>${statvars.num_word_kinds}</td>
+</tr>
+    </table>
+
+  <em class="pull-right small"> beep.</em>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <xi:include href="master.html" />
+
+<head>
+  <title>Word List</title>
+<style>
+table.wordlist { border-spacing: 1em .5em; border-collapse: separate; }
+.ipa {
+    font-family: Andika;
+    font-size: 12pt;
+}
+</style>
+</head>
+
+<body>
+  <div class="main_content">
+<div>[ <span py:for="letter in letters"><a href="?letter=${letter}">${letter}</a> </span> ]</div>
+<table class="wordlist">
+<tr>
+<th>Representation</th>
+<th>Word Kind</th>
+<th>IPA</th>
+</tr>
+<tr py:for="word in words">
+<td><a href="/word/${word.id}">${word.representation}</a></td>
+<td><span py:if="word.kind">${word.kind.name}</span></td>
+<td><span class="ipa">${word.ipa_pronunciation}</span></td>
+</tr>
+</table>
+</div>
+</body>
+</html>
