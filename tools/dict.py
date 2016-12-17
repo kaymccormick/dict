@@ -1,4 +1,11 @@
 #!/usr/bin/python -*- tab-width: 4
+#
+# Author: Kay McCormick
+# Purpose: process definition list HTML into entities backed by datastore
+# Notes:
+#  This is a mix of BeautifulSoup and direct lxml which makes for a
+#  messy business.
+#  Parsing is nearly but not fully complete.
 
 from uuid import uuid4
 import hashlib
@@ -27,8 +34,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
+password = '';
 logger = logging.getLogger(__name__)
-engine = create_engine('postgresql://sqlalchemy:aPXMW#xphj50@localhost/sqlalchemy', echo=False)
+engine = create_engine('postgresql://sqlalchemy:' + password + '@localhost/sqlalchemy', echo=False)
 
 generateXml = False
 
@@ -108,6 +116,7 @@ def extract_text(elem, strContent, skipWhitespace = True, trimWhitespace = True)
 
 
 def load_abbrs_to_memory():
+    # path elsewhere in perforce depot - must be updated
     abbrsFile = codecs.open("../../../scripts/dict-refactor/abbrev.html", "r", "utf-8")
     contents = abbrsFile.read()
     abbrsFile.close()
